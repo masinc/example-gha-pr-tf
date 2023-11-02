@@ -23,5 +23,5 @@ jobs:
         run: |
           echo "name = \"${{ github.repository_owner }}\"" > terraform.tfvars
       - run: terraform init
-      - run: terraofrm plan
+      - run: terraform plan
       - run: terraform apply -auto-approve
