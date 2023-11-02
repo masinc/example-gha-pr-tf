@@ -12,7 +12,6 @@ jobs:
     defaults:
       run:
         shell: bash
-
     steps:
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
@@ -21,6 +20,7 @@ jobs:
       - name: generate-tfvars
         run: |
           echo "name = \"${{ github.repository_owner }}\"" > terraform.tfvars
+      - run: terraform login -token=${{ secrets.TF_API_TOKEN }}
       - run: terraform init
       - run: terraofrm plan
       - run: terraform apply -auto-approve
