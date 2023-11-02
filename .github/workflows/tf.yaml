@@ -19,9 +19,11 @@ jobs:
         with:
           terraform_version: 1.6.3
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      - run: terraform fmt -check -recursive
       - name: generate-tfvars
         run: |
           echo "owner = \"${{ github.repository_owner }}\"" > terraform.tfvars
       - run: terraform init
+      - run: terraform validate
       - run: terraform plan
       - run: terraform apply -auto-approve
