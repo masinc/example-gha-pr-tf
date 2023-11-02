@@ -12,6 +12,7 @@ jobs:
     defaults:
       run:
         shell: bash
+    environment: main
     steps:
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
