@@ -1,0 +1,10 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  generate-tfvars:
+    cmds:
+      - echo "owner = \"$(git config user.name)\"" > terraform.tfvars
+    
+    
